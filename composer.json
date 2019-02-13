@@ -1,0 +1,14 @@
+{
+    "name": "ueb/contabil",
+    "description": "Site Contabil",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edinei J. Bauer",
+            "email": "edineibauer@gmail.com"
+        }
+    ],
+    "require": {
+        "ueb/dashboard": "^1.0"
+    }
+}
