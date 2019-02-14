@@ -15,11 +15,10 @@ if(empty($dados['usuario_id']) && !empty($dados['senha'])) {
     $user['nome'] = $user['nome'] . ($read->getResult() ? strtotime('now') : "");
     $user["nome_usuario"] = \Helpers\Check::name($user['nome']);
 
-    $create = new \Conn\Create();
-    $create->exeCreate("usuarios", $user);
+    $id = \Entity\Entity::add("usuarios", $user);
 
-    if($create->getResult()) {
-        $dados['usuario_id'] = $create->getResult();
+    if(is_numeric($id)) {
+        $dados['usuario_id'] = $id;
         $up = new \Conn\Update();
         $up->exeUpdate("contador", $dados, "WHERE id = :id", "id={$dados['id']}");
     }
