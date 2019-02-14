@@ -5,7 +5,7 @@ if(empty($dados['usuario_id']) && !empty($dados['senha'])) {
         "nome" => $dados['razao_social'],
         "email" => $dados['email'],
         "password" => $dados['senha'],
-        "setor" => 3,
+        "setor" => 2,
         "nivel" => 1,
         "status" => $dados['ativo']
     ];
@@ -17,6 +17,7 @@ if(empty($dados['usuario_id']) && !empty($dados['senha'])) {
 
     $create = new \Conn\Create();
     $create->exeCreate("usuarios", $user);
+
     if($create->getResult()) {
         $dados['usuario_id'] = $create->getResult();
         $up = new \Conn\Update();
