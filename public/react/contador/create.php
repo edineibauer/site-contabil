@@ -5,7 +5,7 @@ if(!empty($dados['senha'])) {
         "nome" => $dados['razao_social'],
         "email" => $dados['email'],
         "password" => $dados['senha'],
-        "setor" => 2,
+        "setor" => 3,
         "nivel" => 1,
         "status" => $dados['ativo']
     ];
@@ -18,8 +18,7 @@ if(!empty($dados['senha'])) {
     $id = \Entity\Entity::add("usuarios", $user);
 
     if(is_numeric($id)) {
-        $dados['usuario_id'] = $id;
         $up = new \Conn\Update();
-        $up->exeUpdate("contador", $dados, "WHERE id = :id", "id={$dados['id']}");
+        $up->exeUpdate("contador", ['usuarios_id' => $id], "WHERE id = :id", "id={$dados['id']}");
     }
 }
